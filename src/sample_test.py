@@ -1,13 +1,16 @@
-import pandas as pd
+from datetime import date
 
-sample_raw = {
-    "temprature":24.7,
-    "humidity":87,
-    "co2":950,
-    "yield":18.2
+sample_reading = {
+    "date": date.today().isoformat(),
+    "temperature_c": 22.4,
+    "humidity_pct": 88.5,
+    "co2_ppm": 950,
+    "yield_kg": 12.3,
 }
 
-df = pd.DataFrame([sample_raw])
+print("Polyhouse sensor snapshot:")
+for key, value in sample_reading.items():
+    print(f"  {key}: {value}")
 
-print("sample polyhouse sensor data")
-print(df)
+assert sample_reading["humidity_pct"] > 80, "Oyster mushrooms need high humidity"
+print("Environment OK.")
