@@ -4,10 +4,6 @@
 
 ## Clone Repository
 
-git clone https://github.com/<your-username>/zelbytes-yield-forecasting.git
-
-cd zelbytes-yield-forecasting
-
 ## Create Virtual Environment
 
 ### Windows
