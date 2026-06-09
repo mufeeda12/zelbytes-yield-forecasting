@@ -1,7 +1,10 @@
 venv/
-.venv/
+.env
 __pycache__/
-.ipynb_checkpoints/
 *.pyc
-*.pkl
+.ipynb_checkpoints/
 .DS_Store
+
+# Large raw logs — keep locally or in cloud storage
+data/raw/*.csv
+!data/raw/.gitkeep
