@@ -116,3 +116,34 @@ Install required packages:
 
 ```bash
 pip install pandas pyarrow openpyxl
+
+## Task 4: Train/Test Split & Data Leakage Prevention
+
+### Chronological Split
+
+The dataset was sorted by timestamp and split chronologically using an 80/20 ratio. The first 80% of records were used for training, while the remaining 20% were reserved for testing. This ensures that the model is trained on past observations and evaluated on future observations.
+
+### Data Leakage Prevention
+
+To prevent data leakage, the MinMaxScaler was fitted only on the training dataset using `fit_transform()`. The same scaler was then applied to the test dataset using `transform()`. This ensures that no statistical information from the test set influences the training process.
+
+### Train and Test Sizes
+
+Training set size: 80% of total records
+Test set size: 20% of total records
+
+The exact row counts were logged during execution.
+
+### Feature Integrity
+
+All features (`temperature_c`, `humidity_pct`, and `co2_ppm`) are derived from measurements recorded at the same timestamp. No feature uses information from future timestamps, ensuring realistic forecasting conditions.
+
+### Saved Artifacts
+
+The following artifacts were generated and saved for future modeling tasks:
+
+* `data/processed/train.parquet`
+* `data/processed/test.parquet`
+* `models/minmax_scaler_train.joblib`
+
+These files will be used in subsequent regression and forecasting experiments.
