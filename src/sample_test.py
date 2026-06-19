@@ -14,3 +14,6 @@ for key, value in sample_reading.items():
 
 assert sample_reading["humidity_pct"] > 80, "Oyster mushrooms need high humidity"
 print("Environment OK.")
+
+
+

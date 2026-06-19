@@ -8,19 +8,19 @@ print(df.isna().sum())
 
 # Valid ranges for oyster polyhouse
 valid = (
-    df["humidity_pct"].between(50, 100)
-    & df["temperature_c"].between(10, 35)
-    & df["co2_ppm"].between(400, 2000)
-    & df["yield_kg"].notna()
+    df["humidity"].between(50, 100)
+    & df["temperature"].between(10, 35)
+    & df["CO2"].between(400, 2000)
+    & df["yield"].notna()
 )
 df = df[valid].copy()
 
 # Short gap: forward-fill sensor columns only
-cols = ["temperature_c", "humidity_pct", "co2_ppm"]
+cols = ["temperature", "humidity", "CO2"]
 df[cols] = df[cols].ffill(limit=2)
 
 # Drop remaining rows with null target
-df = df.dropna(subset=["yield_kg"])
+df = df.dropna(subset=["yield"])
 
 # Duplicates by timestamp
 df = df.drop_duplicates(subset=["timestamp"], keep="last")

@@ -2,7 +2,7 @@ import pandas as pd
 from pathlib import Path
 df = pd.read_parquet("data/interim/02_cleaned.parquet")
 
-summary = df[["temperature_c", "humidity_pct", "co2_ppm", "yield_kg"]].describe().T
+summary = df[["temperature", "humidity", "CO2", "yield"]].describe().T
 summary["cv"] = summary["std"] / summary["mean"]
 
 report = []

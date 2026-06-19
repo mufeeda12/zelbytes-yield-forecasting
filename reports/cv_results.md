@@ -9,7 +9,7 @@ TimeSeriesSplit with 5 folds was used to preserve chronological order and preven
 - Standard Deviation: 0.0044
 
 ## Random Forest
-- Fold MAE: [0.0827967213114752, 0.05508524590163937, 0.06568032786885258, 0.05377540983606568, 0.0585360655737706]
+- Fold MAE: [0.0827967213114752, 0.05508524590163936, 0.06568032786885257, 0.05377540983606569, 0.0585360655737706]
 - Average CV MAE: 0.0632
 - Standard Deviation: 0.0106
 

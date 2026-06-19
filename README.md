@@ -147,3 +147,114 @@ The following artifacts were generated and saved for future modeling tasks:
 * `models/minmax_scaler_train.joblib`
 
 These files will be used in subsequent regression and forecasting experiments.
+
+
+task 7
+
+# GridSearchCV Tuning Summary
+
+## Objective
+
+The objective was to improve Random Forest performance by tuning key hyperparameters using GridSearchCV.
+
+## Parameter Grid
+
+* n_estimators: [50, 100, 200]
+
+  * Controls the number of trees in the forest.
+  * More trees can improve performance but increase runtime.
+
+* max_depth: [None, 8, 16]
+
+  * Controls tree depth.
+  * Shallower trees may reduce overfitting.
+
+* min_samples_leaf: [1, 3, 5]
+
+  * Controls the minimum number of samples required in a leaf node.
+  * Larger values can improve generalization.
+
+## Methodology
+
+GridSearchCV was performed using TimeSeriesSplit with 3 folds. Only the training dataset was used during tuning. Mean Absolute Error (MAE) was used as the scoring metric.
+
+## Results
+
+* Best parameters: See `models/rf_best_params.json`
+* Best model: `models/random_forest_tuned.joblib`
+* CV results: `reports/gridsearch_results.csv`
+
+The tuned model was evaluated once on the held-out test set after tuning.
+
+## Runtime
+
+The total GridSearch runtime was recorded in `reports/gridsearch_metrics.json`.
+
+## Conclusion
+
+GridSearchCV identified the best combination of hyperparameters for the Random Forest model while avoiding data leakage. The tuned model will be used for final model comparison and selection.
+
+phase 2 (day 15 last)
+
+🌱 Yield Forecasting using Machine Learning
+
+This project predicts crop yield based on environmental parameters such as temperature, humidity, and CO2 levels using a trained Machine Learning model.
+
+📁 Project Structure
+
+zelbytes-yield-forecasting/
+│
+├── data/
+├── models/
+│ ├── minmax_scaler_train.joblib
+│ ├── random_forest_tuned.joblib
+│ └── feature_cols.json
+│
+├── src/
+│ └── predict.py
+│
+├── requirements.txt
+└── README.md
+
+⚙️ Requirements
+
+Install dependencies using:
+
+pip install -r requirements.txt
+
+🚀 How to Run Prediction
+
+Run the script using:
+
+python src/predict.py
+
+📌 Example Output
+
+Input: T=25, H=90, CO2=1000 → Predicted Yield: 1.16 kg
+
+🧠 Model Details
+Algorithm: Random Forest Regressor
+Scaling: MinMaxScaler
+Input Features:
+temperature
+humidity
+CO2
+Target: yield_kg
+🔄 Workflow
+Data collection and cleaning
+Feature scaling using MinMaxScaler
+Model training using Random Forest
+Model saving using joblib
+Inference using saved scaler + model
+📊 Python Usage Example
+
+from src.predict import make_prediction
+
+result = make_prediction(25, 90, 1000)
+print(result)
+
+📦 Requirements
+pandas
+numpy
+scikit-learn
+joblib
