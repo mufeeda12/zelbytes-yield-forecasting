@@ -258,3 +258,183 @@ pandas
 numpy
 scikit-learn
 joblib
+
+-------------------
+phase 3
+-------------------
+# 🍄 Mushroom Yield Forecasting using Machine Learning
+
+A machine learning-powered web application that predicts **daily mushroom yield (kg/day)** using polyhouse environmental sensor readings. The application is built with **Python**, **Scikit-learn**, and **Streamlit**, providing an interactive interface for farm managers to estimate yield under different environmental conditions.
+
+## 🌐 Live Demo
+
+**Streamlit App:**
+https://zelbytes-yield-forecasting-n7jju6xpvrhfz7mr7dpig8.streamlit.app/
+
+---
+
+## 📌 Project Overview
+
+This project predicts mushroom yield based on three environmental parameters collected from a polyhouse:
+
+* 🌡 Temperature (°C)
+* 💧 Humidity (%)
+* 🌬 CO₂ Concentration (ppm)
+
+Users can adjust these parameters through an interactive Streamlit interface and instantly receive the predicted daily mushroom yield.
+
+---
+
+## ✨ Features
+
+* Interactive Streamlit web application
+* Daily mushroom yield prediction
+* Humidity sensitivity ("What-if") analysis
+* Model metadata display
+* Input validation with user-friendly warnings
+* Responsive interface suitable for desktop and mobile
+* Cached model loading for faster predictions
+
+---
+
+## 🛠 Tech Stack
+
+* Python
+* Streamlit
+* Scikit-learn
+* Pandas
+* NumPy
+* Joblib
+* Matplotlib (if used)
+
+---
+
+## 📂 Repository Structure
+
+```text
+zelbytes-yield-forecasting/
+│
+├── app.py                     # Streamlit application (main entry point)
+├── requirements.txt           # Python dependencies
+├── runtime.txt                # Python version (optional)
+├── README.md
+│
+├── models/
+│   ├── random_forest_tuned.joblib
+│   ├── minmax_scaler_train.joblib
+│   └── feature_columns.json
+│
+├── src/
+│   ├── __init__.py
+│   └── predict.py
+│
+├── tests/
+│   └── test_predict.py
+│
+├── reports/
+│   ├── methodology.md
+│   ├── task8_streamlit_app.png
+│   └── test_scenarios.md
+│
+└── data/
+```
+
+### Streamlit Main File
+
+```text
+app.py
+```
+
+---
+
+## 🚀 Run Locally
+
+Clone the repository:
+
+```bash
+git clone <your-github-repository-url>
+```
+
+Move into the project directory:
+
+```bash
+cd zelbytes-yield-forecasting
+```
+
+Create and activate a virtual environment:
+
+### Windows
+
+```bash
+python -m venv .venv
+.venv\Scripts\activate
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Run the application:
+
+```bash
+streamlit run app.py
+```
+
+The application will be available at:
+
+```text
+http://localhost:8501
+```
+
+---
+
+## 📈 Model Inputs
+
+| Feature     | Unit |
+| ----------- | ---- |
+| Temperature | °C   |
+| Humidity    | %    |
+| CO₂         | ppm  |
+
+### Output
+
+* Predicted Mushroom Yield (kg/day)
+
+---
+
+## 📊 Testing
+
+The project includes unit tests using **pytest**.
+
+Run the tests:
+
+```bash
+pytest tests/
+```
+
+---
+
+## 📋 Sample Test Scenario
+
+| Temperature | Humidity |      CO₂ | Expected Behaviour   |
+| ----------: | -------: | -------: | -------------------- |
+|        22°C |      88% |  900 ppm | Normal prediction    |
+|        22°C |      70% |  900 ppm | Lower yield expected |
+|        32°C |      88% |  900 ppm | Warning displayed    |
+|        22°C |      88% | 1800 ppm | Warning displayed    |
+|        14°C |      90% |  900 ppm | Warning displayed    |
+
+---
+
+## 📦 Deployment
+
+The application is deployed on **Streamlit Community Cloud**.
+
+Live Application:
+
+https://zelbytes-yield-forecasting-n7jju6xpvrhfz7mr7dpig8.streamlit.app/
+
+---
+
